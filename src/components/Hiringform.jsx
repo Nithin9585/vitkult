@@ -6,9 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from './ui/label';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from '@/hooks/use-toast';  
-import TechnicalTeamForm from './TechnicalTeamForm';
-import OtherTeamForm from './OtherTeamForm';
-
+import TechnicalTeamForm from './Technicalteamform';
+import OtherTeamForm from './Otherteamform';
 function HiringForm() {
   const [selectedTeam, setSelectedTeam] = useState('');
   const [email, setEmail] = useState('');
