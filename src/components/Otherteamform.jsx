@@ -107,16 +107,11 @@ function OtherTeamForm({ name, regNo, email, phoneNumber, branch, selectedTeam }
                 required
               >
                 <option value="">Select Role</option>
-                <option value="Social Media Manager">Social Media Manager</option>
+                <option value="Social Media Manager">Social Media</option>
                 <option value="Discipline Lead and Volunteer">Discipline Lead and Volunteer</option>
-                <option value="PR and Outreach Boys">PR and Outreach Boys</option>
-                <option value="PR and Outreach Girls">PR and Outreach Girls</option>
-                <option value="Media">Media</option>
-                <option value="Photography">Photography</option>
+                <option value="PR and Outreach Boys">PR and Outreach</option>
                 <option value="Graphic Design">Graphic Design</option>
                 <option value="Editor">Editor</option>
-                <option value="Hospitality and Guest Management">Hospitality and Guest Management</option>
-                <option value="Logistics and Operations">Logistics and Operations</option>
                 <option value="Content Writing Technical">Content Writing Technical</option>
                 <option value="Content Writing Non-Technical">Content Writing Non-Technical</option>
               </select>
