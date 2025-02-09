@@ -1,5 +1,13 @@
 // components/Navbar.js
 import Link from 'next/link';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 import { Button } from './ui/button';
 import {
   Sheet,
@@ -22,14 +30,13 @@ export default function Navbar() {
         </div>
       <div className="hidden md:flex space-x-4 items-center">
   <Link href="/" className="transition duration-300 ease-in-out relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-400 after:to-purple-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100 hover:-translate-y-1">Forms</Link>
-  {/* <Link href="/blog" className="transition duration-300 ease-in-out relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-400 after:to-purple-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100 hover:-translate-y-1">Blog</Link>
-  <Link href="/about" className="transition duration-300 ease-in-out relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-400 after:to-purple-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100 hover:-translate-y-1">About</Link>
-  <Link href="/Contact" className="transition duration-300 ease-in-out relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-blue-400 after:to-purple-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100 hover:-translate-y-1">Contact</Link> */}
-
-{/* <div>
-    <Button className="mx-1 hover:bg-gray-200 hover:text-black dark:hover:bg-gray-700 dark:hover:text-white transition duration-300 ease-in-out" variant="outline">Login</Button>
-    <Button className="mx-1 hover:bg-gray-200 hover:text-black dark:hover:bg-gray-700 dark:hover:text-white transition duration-300 ease-in-out" variant="outline">Sign up</Button>
-  </div> */}
+  <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
   <ModeToggle />
 </div>
         <div className="md:hidden">
@@ -48,13 +55,13 @@ export default function Navbar() {
                 <SheetDescription>
                   <div className="flex pt-10 flex-col gap-8 items-center">
                     <Link href="/" className=" hover:text-gray-200">Forms</Link>
-                    {/* <Link href="/blog" className=" hover:text-gray-200">Blog</Link>
-                    <Link href="/about" className=" hover:text-gray-200">About</Link> */}
-                    {/* <Link href="/Contact" className=" hover:text-gray-200">Contact</Link> */}
-                    {/* <div className="flex justify-center absolute bottom-0 left-0 w-full p-4">
-                      <Button className="mx-3" variant="outline">Login</Button>
-                      <Button className="mx-3" variant="outline">Sign up</Button>
-                    </div> */}
+                    <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
                   </div>
                 </SheetDescription>
               </SheetHeader>
