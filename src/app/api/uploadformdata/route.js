@@ -1,28 +1,33 @@
-// src/app/api/uploadformdata/route.js
-import { connectDB } from '@/helper/db';  // Connect to the DB (use your DB logic)
-import TechnicalTeam from '../../../../models/TechnicalTeam';  // Import the correct model
+import { connectDB } from '@/helper/db';
+import TechnicalTeam from '../../../../models/TechnicalTeam';
+import NonTechnicalTeam from '../../../../models/NonTechnicalTeam';
+import EventManagementTeam from '../../../../models/EventManagement';
 
-// Handle POST request
 export async function POST(req) {
   try {
-    await connectDB();  // Connect to the DB
+    await connectDB();
 
-    // Parse the request body
-    const {
+      const  {
       name,
       regNo,
       email,
       phoneNumber,
       branch,
       selectedTeam,
-      reason,
-      contribution,
-      github,
-      linkedin,
-      codingProfile,
-      previousWork,
-    } = await req.json();  
-    const newEntry = new TechnicalTeam({
+    } = await req.json();
+
+    let TeamModel;
+    if (selectedTeam === "Technical") {
+      TeamModel = TechnicalTeam;
+    } else if (selectedTeam === "Non-Technical") {
+      TeamModel = NonTechnicalTeam;
+    } else if (selectedTeam === "Event Management") {
+      TeamModel = EventManagementTeam;
+    } else {
+      return new Response(JSON.stringify({ message: "Invalid team selection" }), { status: 400 });
+    }
+
+    const newEntry = new TeamModel({
       name,
       regNo,
       email,
@@ -45,4 +50,3 @@ export async function POST(req) {
     return new Response(JSON.stringify({ message: 'Error submitting the form data.' }), { status: 500 });
   }
 }
-
