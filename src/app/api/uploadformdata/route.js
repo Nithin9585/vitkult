@@ -1,28 +1,33 @@
 import { connectDB } from '@/helper/db';
 import TechnicalTeam from '../../../../models/TechnicalTeam';
 import NonTechnicalTeam from '../../../../models/NonTechnicalTeam';
-import EventManagementTeam from '../../../../models/EventManagement';
-
 export async function POST(req) {
   try {
     await connectDB();
 
       const  {
-      name,
-      regNo,
-      email,
-      phoneNumber,
-      branch,
-      selectedTeam,
+        name,
+        regNo,
+        email,
+        phoneNumber,
+        branch,
+        selectedTeam,
+        role,  
+        reason, 
+        contribution,
+        linkedin,
+        github, 
+        codingProfile,  
+        previousWork
     } = await req.json();
 
     let TeamModel;
-    if (selectedTeam === "Technical") {
+    if (selectedTeam === "Technical Team") {
       TeamModel = TechnicalTeam;
-    } else if (selectedTeam === "Non-Technical") {
+    } else if (selectedTeam === "Non Technical Team") {
       TeamModel = NonTechnicalTeam;
-    } else if (selectedTeam === "Event Management") {
-      TeamModel = EventManagementTeam;
+    } else if (selectedTeam === "Event Management Team") {
+      TeamModel = NonTechnicalTeam;
     } else {
       return new Response(JSON.stringify({ message: "Invalid team selection" }), { status: 400 });
     }
@@ -34,6 +39,7 @@ export async function POST(req) {
       phoneNumber,
       branch,
       selectedTeam,
+      role: role || null,
       reason: reason || null,
       contribution: contribution || null,
       github: github || null,

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useToast } from '@/hooks/use-toast'; 
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
-function OtherTeamForm({ name, regNo, email, phoneNumber, branch, selectedTeam }) {
+function Eventmanagement({ name, regNo, email, phoneNumber, branch, selectedTeam }) {
   const router = useRouter();
   const { toast } = useToast();  
   const [answers, setAnswers] = useState({
@@ -91,7 +91,7 @@ function OtherTeamForm({ name, regNo, email, phoneNumber, branch, selectedTeam }
     <motion.div className="min-h-screen flex items-center justify-center m-10 bg-primary-900">
       <motion.div className="p-8 rounded-lg w-full max-w-3xl bg-primary-800">
         <motion.h2 className="text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-red-500">
-          Core Team Form
+          Event Management Team Form
         </motion.h2>
         <form onSubmit={handleSubmit}>
           <motion.div>
@@ -108,17 +108,15 @@ function OtherTeamForm({ name, regNo, email, phoneNumber, branch, selectedTeam }
               >
                 <option value="">Select Role</option>
                 <option value="Social Media Manager">Social Media Manager</option>
-                <option value="Discipline Lead and Volunteer">Discipline Lead and Volunteer</option>
-                <option value="PR and Outreach Boys">PR and Outreach Boys</option>
-                <option value="PR and Outreach Girls">PR and Outreach Girls</option>
+                <option value="Discipline Lead and Volunteer">Discipline </option>
+                <option value="PR and Outreach">PR and Outreach</option>
                 <option value="Media">Media</option>
                 <option value="Photography">Photography</option>
                 <option value="Graphic Design">Graphic Design</option>
                 <option value="Editor">Editor</option>
                 <option value="Hospitality and Guest Management">Hospitality and Guest Management</option>
                 <option value="Logistics and Operations">Logistics and Operations</option>
-                <option value="Content Writing Technical">Content Writing Technical</option>
-                <option value="Content Writing Non-Technical">Content Writing Non-Technical</option>
+                <option value="Content Writing Technical">Content Writing </option>
               </select>
             </motion.div>
 
@@ -191,4 +189,4 @@ function OtherTeamForm({ name, regNo, email, phoneNumber, branch, selectedTeam }
   );
 }
 
-export default OtherTeamForm;
+export default Eventmanagement;

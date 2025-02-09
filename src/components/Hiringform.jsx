@@ -7,7 +7,9 @@ import { Label } from './ui/label';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from '@/hooks/use-toast';  
 import TechnicalTeamForm from './Technicalteamform';
-import OtherTeamForm from './Otherteamform';
+import NonTechnical from './NonTechniical';
+import Eventmanagement from './Eventmanagement';
+
 function HiringForm() {
   const [selectedTeam, setSelectedTeam] = useState('');
   const [email, setEmail] = useState('');
@@ -117,9 +119,9 @@ function HiringForm() {
           selectedTeam={selectedTeam}
         />
       );
-    } else {
+    } else if(selectedTeam === "Event Management Team") {
       return (
-        <OtherTeamForm
+        <Eventmanagement
           name={name}
           regNo={regNo}
           email={email}
@@ -128,6 +130,17 @@ function HiringForm() {
           selectedTeam={selectedTeam}
         />
       );
+    }else{
+      return (
+        <NonTechnical
+          name={name}
+          regNo={regNo}
+          email={email}
+          phoneNumber={phoneNumber}
+          branch={branch}
+          selectedTeam={selectedTeam}
+        />
+      )
     }
   }
 
@@ -139,7 +152,7 @@ function HiringForm() {
       className="max-w-full lg:max-w-4xl mx-auto p-6 bg-ivory rounded-lg "
     >
       <h1 className="text-3xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-red-500">
-        Hiring Form
+        Recruitment Form
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-8">
@@ -149,7 +162,7 @@ function HiringForm() {
           transition={{ duration: 0.5 }}
           className="flex flex-col"
         >
-          <Label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-700">
+          <Label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-400">
             Name:
           </Label>
           <Input
@@ -168,7 +181,7 @@ function HiringForm() {
           transition={{ duration: 0.6 }}
           className="flex flex-col"
         >
-          <Label htmlFor="regNo" className="block text-sm font-medium mb-2 text-gray-700">
+          <Label htmlFor="regNo" className="block text-sm font-medium mb-2 text-gray-400">
             Registration Number:
           </Label>
           <Input
@@ -197,7 +210,7 @@ function HiringForm() {
           transition={{ duration: 0.7 }}
           className="flex flex-col"
         >
-          <Label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-700">
+          <Label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-400">
             Email ID:
           </Label>
           <Input
@@ -227,7 +240,7 @@ function HiringForm() {
           transition={{ duration: 0.8 }}
           className="flex flex-col"
         >
-          <Label htmlFor="phone" className="block text-sm font-medium mb-2 text-gray-700">
+          <Label htmlFor="phone" className="block text-sm font-medium mb-2 text-gray-400">
             Phone Number:
           </Label>
           <Input
@@ -257,7 +270,7 @@ function HiringForm() {
           transition={{ duration: 0.9 }}
           className="flex flex-col"
         >
-          <Label htmlFor="branch" className="block text-sm font-medium mb-2 text-gray-700">
+          <Label htmlFor="branch" className="block text-sm font-medium mb-2 text-gray-400">
             Branch:
           </Label>
           <Input
@@ -286,12 +299,12 @@ function HiringForm() {
           transition={{ duration: 1 }}
           className="flex flex-col"
         >
-          <Label className="block text-sm font-medium mb-2 text-gray-700">Select Team:</Label>
+          <Label className="block text-sm font-medium mb-2 text-gray-400">Select Team:</Label>
           <RadioGroup value={selectedTeam} onValueChange={handleTeamChange}>
             {["Non Technical Team", "Technical Team", "Event Management Team"].map((team) => (
               <div key={team} className="flex items-center mb-4 space-x-2">
                 <RadioGroupItem value={team} id={team} />
-                <Label htmlFor={team} className="text-sm text-gray-700">
+                <Label htmlFor={team} className="text-sm text-gray-400">
                   {team}
                 </Label>
               </div>

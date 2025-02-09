@@ -31,13 +31,14 @@ function TechnicalTeamForm({ name, regNo, email, phoneNumber, branch, selectedTe
         branch,
         selectedTeam,
         role: answers.role,  
-        reason: answers.reason,
+        reason: answers.reason,  // change this line
         contribution: answers.contribution,
         linkedin: answers.linkedin,
         github: answers.github, 
         codingProfile: answers.codingProfile,  
         previousWork: answers.previousWork,  
     };
+    
 
     const { toast } = useToast(); 
     const router = useRouter(); 
@@ -66,7 +67,7 @@ function TechnicalTeamForm({ name, regNo, email, phoneNumber, branch, selectedTe
             phoneNumber,
             branch,
             selectedTeam,
-            reason: answers.reason,
+            reason: answers.reason,  // change this line
             contribution: answers.contribution,
             linkedin: answers.linkedin,
             github: answers.github,
