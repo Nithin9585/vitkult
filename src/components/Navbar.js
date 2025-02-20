@@ -1,14 +1,12 @@
 // components/Navbar.js
 import Link from 'next/link';
 import {
-  ClerkProvider,
   SignInButton,
   SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
-import { Button } from './ui/button';
 import {
   Sheet,
   SheetContent,

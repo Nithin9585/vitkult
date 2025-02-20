@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
+import UserSessionHandler from "@/components/UserSessionHandler"; // Import the UserSessionHandler component
 import "./globals.css";
 
 // Define fonts
@@ -25,19 +26,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ClerkProvider
-          frontendApi="your-clerk-frontend-api" // replace with your Clerk frontend API
-        >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ClerkProvider>
+          {/* Add UserSessionHandler here */}
+          <UserSessionHandler />  {/* This will listen for user session changes globally */}
+          
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navbar />
             <Toaster />
-           
             {children}
           </ThemeProvider>
-          </ClerkProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

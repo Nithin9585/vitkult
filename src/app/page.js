@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-primary-900">
       <Link href={"/Forms"}>  
         <Button className="bg-gradient-to-r from-yellow-200 to-red-500">
-          Forms
+          Join Us
         </Button>
       </Link>
     </div>
