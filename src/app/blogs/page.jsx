@@ -12,8 +12,11 @@ function Blogs() {
 
   useEffect(() => {
     const getBlogs = async () => {
+      const startTime = Date.now();
       try {
-        const blogs = await fetchBlogs();  
+        const blogs = await fetchBlogs(); 
+        const endTime = Date.now(); 
+        console.log(`Execution time: ${endTime - startTime}ms`);
         setBlogPosts(blogs);
       } catch (err) {
         setError(err.message);
