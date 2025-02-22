@@ -1,20 +1,20 @@
-import {getAuth} from '@clerk/nextjs/server';
+// import {getAuth} from '@clerk/nextjs/server';
 import Blog from "../../../../models/BlogSchema";
 import { connectDB } from '@/helper/db';
 import { NextResponse } from 'next/server';
 
-export const config = {
-    matcher: '/api/createblog',
-  };
+// export const config = {
+//     matcher: '/api/createblog',
+//   };
 export async function POST(req) {
-     const { user } = await getAuth(req);  
+    //  const { user } = await getAuth(req);  
     
-        if (!user) {
-            return NextResponse.json(
-                { success: false, message: 'You must be logged in to view blogs' },
-                { status: 401 } 
-            );
-        }
+    //     if (!user) {
+    //         return NextResponse.json(
+    //             { success: false, message: 'You must be logged in to view blogs' },
+    //             { status: 401 } 
+    //         );
+    //     }
     await connectDB();
     
     const { title, author, content, image, userId } = await req.json();
