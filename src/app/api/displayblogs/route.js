@@ -10,6 +10,7 @@ export async function GET(req) {
     
     try {
         const blogs = await Blog.find(); 
+        console.log('Blogs fetched:', blogs);
 
         if (blogs.length > 0) {
             return NextResponse.json({ success: true, blogs });
