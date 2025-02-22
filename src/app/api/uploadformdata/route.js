@@ -1,7 +1,19 @@
 import { connectDB } from '@/helper/db';
 import TechnicalTeam from '../../../../models/TechnicalTeam';
 import NonTechnicalTeam from '../../../../models/NonTechnicalTeam';
+import {getAuth} from '@clerk/nextjs/server';
+export const config = {
+  matcher: '/api/uploadformdata',
+};
 export async function POST(req) {
+   const { user } = await getAuth(req);  
+  
+      if (!user) {
+          return NextResponse.json(
+              { success: false, message: 'You must be logged in to view blogs' },
+              { status: 401 } 
+          );
+      }
   try {
     await connectDB();
 

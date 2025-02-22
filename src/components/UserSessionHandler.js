@@ -16,7 +16,6 @@ const UserSessionHandler = () => {
         const lastname = user && user.lastName;
        
         if (email) {
-          console.log(user);
           const res = await fetch('/api/CreateUpdateUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

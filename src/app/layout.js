@@ -28,8 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClerkProvider>
-          {/* Add UserSessionHandler here */}
-          <UserSessionHandler />  {/* This will listen for user session changes globally */}
+          {/* <UserSessionHandler />   */}
           
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navbar />
