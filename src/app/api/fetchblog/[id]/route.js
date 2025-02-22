@@ -6,7 +6,7 @@ import Blog from "../../../../../models/BlogSchema";
 export async function GET(req, { params }) {
     await connectDB();
 
-    const { id } = params;  
+    const { id } = await params;  
 
     try {
         const blog = await Blog.findById(id);

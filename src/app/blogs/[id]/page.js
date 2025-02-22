@@ -4,41 +4,49 @@ import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 function BlogPost() {
-  const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { id } = useParams(); // Get the blog post ID from the URL parameters
+  const [post, setPost] = useState(null); // Store the fetched blog post
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
   useEffect(() => {
     if (id) {
-      // Fetch the blog post data based on the id
+      // Fetch the blog post data based on the ID
       const fetchPost = async () => {
         try {
           const response = await fetch(`/api/fetchblog/${id}`);
-          const data = await response.json();
 
-          if (response.ok && data.success) {
-            setPost(data.blog);
+          if (!response.ok) {
+            // If the response is not OK, throw an error
+            throw new Error('Failed to fetch the blog post');
+          }
+
+          const data = await response.json(); // Parse the response as JSON
+
+          if (data.success) {
+            setPost(data.blog); // If successful, set the blog post
           } else {
-            setError(data.message || 'Failed to fetch the blog post');
+            // If the API returns failure message, throw an error
+            throw new Error(data.message || 'Failed to fetch the blog post');
           }
         } catch (err) {
-          setError('Error fetching blog post');
+          // Catch any errors and set the error message
+          setError(err.message || 'Error fetching blog post');
         } finally {
-          setLoading(false);
+          setLoading(false); // Set loading to false after fetching is done
         }
       };
 
       fetchPost();
     }
-  }, [id]);
+  }, [id]); // Trigger the effect when the `id` changes
 
   // If the blog post is still loading
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // If there's an error
+  // If there's an error fetching the post
   if (error) {
     return <div>Error: {error}</div>;
   }
